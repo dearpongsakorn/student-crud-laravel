@@ -63,11 +63,7 @@ Route::get('/delete/{id}', [StudentController::class, 'delete']);
 php artisan make:model Student -mc
 
 --------------------------------------------
-
 ### Model (app/Models/Student.php)
-
-<?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
