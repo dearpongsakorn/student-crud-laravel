@@ -66,21 +66,19 @@ php artisan make:model Student -mc
 
 ### Model (app/Models/Student.php)
 
-namespace App\\Models;
+<?php
 
+namespace App\Models;
 
-use Illuminate\\Database\\Eloquent\\Model;
-
+use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
-
 {
-
     protected $table = 'students';
     
     protected $fillable = ['name', 'email'];
-    
 }
+
 
 --------------------------------------------
 
