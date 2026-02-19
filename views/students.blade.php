@@ -18,16 +18,10 @@
                 @csrf
                 <div class="row">
                     <div class="col">
-                        <input type="text" name="student_id" class="form-control" placeholder="Student ID" required>
-                    </div>
-                    <div class="col">
                         <input type="text" name="name" class="form-control" placeholder="Name" required>
                     </div>
                     <div class="col">
-                        <input type="text" name="major" class="form-control" placeholder="Major" required>
-                    </div>
-                    <div class="col">
-                        <input type="number" name="year" class="form-control" placeholder="Year" required>
+                        <input type="email" name="email" class="form-control" placeholder="Email" required>
                     </div>
                     <div class="col">
                         <button class="btn btn-success">Save</button>
@@ -44,24 +38,19 @@
             <table class="table table-bordered table-striped">
                 <tr>
                     <th>ID</th>
-                    <th>Student ID</th>
                     <th>Name</th>
-                    <th>Major</th>
-                    <th>Year</th>
+                    <th>Email</th>
                     <th>Action</th>
                 </tr>
 
                 @foreach($students as $student)
                 <tr>
                     <td>{{ $student->id }}</td>
-                    <td>{{ $student->student_id }}</td>
                     <td>{{ $student->name }}</td>
-                    <td>{{ $student->major }}</td>
-                    <td>{{ $student->year }}</td>
+                    <td>{{ $student->email }}</td>
                     <td>
-                        <!-- Edit Button -->
                         <button class="btn btn-warning btn-sm"
-                            onclick="editStudent('{{ $student->id }}','{{ $student->student_id }}','{{ $student->name }}','{{ $student->major }}','{{ $student->year }}')">
+                            onclick="editStudent('{{ $student->id }}','{{ $student->name }}','{{ $student->email }}')">
                             Edit
                         </button>
 
@@ -92,10 +81,8 @@
                 </div>
                 <div class="modal-body">
 
-                    <input type="text" name="student_id" id="edit_student_id" class="form-control mb-2">
-                    <input type="text" name="name" id="edit_name" class="form-control mb-2">
-                    <input type="text" name="major" id="edit_major" class="form-control mb-2">
-                    <input type="number" name="year" id="edit_year" class="form-control mb-2">
+                    <input type="text" name="name" id="edit_name" class="form-control mb-2" required>
+                    <input type="email" name="email" id="edit_email" class="form-control mb-2" required>
 
                 </div>
                 <div class="modal-footer">
@@ -109,11 +96,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-function editStudent(id, student_id, name, major, year) {
-    document.getElementById('edit_student_id').value = student_id;
+function editStudent(id, name, email) {
     document.getElementById('edit_name').value = name;
-    document.getElementById('edit_major').value = major;
-    document.getElementById('edit_year').value = year;
+    document.getElementById('edit_email').value = email;
 
     document.getElementById('editForm').action = "/update/" + id;
 
